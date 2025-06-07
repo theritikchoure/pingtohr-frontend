@@ -1,95 +1,210 @@
-import { Link } from "react-router";
-// import { Button } from "@/components/ui/button";
-// import { Mail, BarChart2, Zap, ShieldCheck, UploadCloud, FileText } from "lucide-react";
+import PageMeta from "../../components/common/PageMeta";
 
-const HomePage = () => {
+export default function LandingPage() {
     return (
-        <div className="bg-gradient-to-br from-[#edf4ff] to-[#f8fcff] min-h-screen">
-            <header className="max-w-7xl mx-auto flex justify-between items-center px-6 py-6">
-                <h1 className="text-4xl font-extrabold text-blue-800 tracking-tight">PingToHR</h1>
-                <nav className="space-x-6">
-                    <a href="#features" className="text-blue-700 font-medium hover:underline">Features</a>
-                    <a href="#how-it-works" className="text-blue-700 font-medium hover:underline">How it Works</a>
-                    <Link to={"/signin"} className="text-blue-700 font-medium hover:underline">Login</Link>
-                </nav>
-            </header>
+        <>
+            <PageMeta title="PingToHR – Supercharge Your Job Outreach with Smart Email Automation" description="PingToHR is your all-in-one HR contact manager and cold email assistant. Automate outreach, track engagement, and boost your job search—all directly from your Gmail inbox." />
 
-            <main className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 px-6 py-20">
-                <div className="flex-1">
-                    <h2 className="text-5xl font-extrabold text-gray-900 leading-snug mb-6">
-                        Supercharge Your <span className="text-blue-600">Job Search</span> Effortlessly
-                    </h2>
-                    <p className="text-lg text-gray-700 mb-6">
-                        Seamlessly connect your Gmail to send highly personalized cold emails to HRs. Monitor performance, automate follow-ups, and attach your resume and cover letter — all from one sleek dashboard.
-                    </p>
-                    <Link to="/dashboard" className="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold px-6 py-3 text-lg rounded-lg shadow">
-                        Connect Gmail & Get Started
-                    </Link>
-                </div>
-                <div className="flex-1">
-                    <img
-                        src="https://illustrations.popsy.co/gray/email-marketing.svg"
-                        alt="Email Outreach Dashboard"
-                        className="w-full max-w-md mx-auto"
-                    />
-                </div>
-            </main>
+            <div className="bg-gradient-to-b from-[#0B0F1A] to-[#121722] text-white font-sans min-h-screen">
+                <header className="flex justify-between items-center p-6 max-w-7xl mx-auto">
+                    <div className="text-2xl font-bold text-white">PingToHR</div>
+                    <nav className="space-x-8 text-lg">
+                        <a href="#features" className="hover:text-white/80 transition">Features</a>
+                        <a href="#benefits" className="hover:text-white/80 transition">Benefits</a>
+                        <a href="#pricing" className="hover:text-white/80 transition">Pricing</a>
+                    </nav>
+                    <button className="bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow-lg hover:from-[#252c47] hover:to-[#131923] transition">
+                        Get Started
+                    </button>
+                </header>
 
-            <section id="features" className="max-w-7xl mx-auto px-6 py-20">
-                <h3 className="text-3xl font-bold text-center text-gray-900 mb-14">Everything You Need to Get Noticed</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    <FeatureCard
-                        title="Bulk Gmail Sending"
-                        description="Send hundreds of personalized cold emails using your own Gmail with just a few clicks."
-                    />
-                    <FeatureCard
-                        title="Real-Time Email Analytics"
-                        description="Track email opens, replies, bounces and get insight-driven metrics to improve success."
-                    />
-                    <FeatureCard
-                        title="Follow-Up Automation"
-                        description="Create smart follow-up sequences for unopened or unanswered emails."
-                    />
-                    <FeatureCard
-                        title="Secure Gmail Integration"
-                        description="OAuth-based Gmail connection with full data privacy and security in place."
-                    />
-                    <FeatureCard
-                        title="Resume & Cover Letter Upload"
-                        description="Attach your resume, cover letter, or any job-specific documents to every email."
-                    />
-                    <FeatureCard
-                        title="Upload CSV of HR Emails"
-                        description="Upload a CSV or JSON list of emails and launch a campaign in seconds."
-                    />
-                </div>
-            </section>
+                <section className="text-center py-24 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white">
+                            Reach More HRs, Faster
+                        </h1>
+                        <p className="text-xl md:text-2xl mb-10 max-w-xl mx-auto text-white/70">
+                            Manage HR contacts, automate cold emails, track responses, and boost your outreach with PingToHR — all from your own Gmail.
+                        </p>
+                        <button className="bg-gradient-to-br from-[#161b2b] via-[#1f2541] to-[#121828] border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:from-[#222a43] hover:to-[#171f3a] transition">
+                            Start Emailing Smarter
+                        </button>
+                    </div>
+                </section>
 
-            <section id="how-it-works" className="max-w-5xl mx-auto px-6 py-16">
-                <h3 className="text-3xl font-bold text-center text-gray-900 mb-10">How It Works</h3>
-                <ol className="list-decimal text-gray-700 text-lg space-y-4 px-6">
-                    <li>Connect your Gmail account securely using Google OAuth.</li>
-                    <li>Upload your list of HR contacts (CSV/JSON supported).</li>
-                    <li>Compose or select a cold email template.</li>
-                    <li>Attach your resume and cover letter (optional).</li>
-                    <li>Send the campaign and track opens, clicks, and replies.</li>
-                    <li>Let follow-ups run automatically based on behavior.</li>
-                </ol>
-            </section>
+                <section id="about" className="py-20 px-6">
+                    <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl shadow-lg border border-white/10 p-8">
+                        <h2 className="text-xl mb-8 text-center font-semibold uppercase tracking-wide text-white/70">About PingToHR</h2>
+                        <p className="text-3xl font-semibold leading-relaxed text-center max-w-3xl mx-auto text-white/90">
+                            PingToHR is your personal HR contact manager and outreach assistant. Import contacts, generate email permutations, validate in bulk, and schedule cold emails with built-in tracking and follow-ups — all synced directly with your Gmail.
+                        </p>
+                    </div>
+                </section>
 
-            <footer className="text-center text-gray-500 text-sm py-10 border-t border-gray-200">
-                © { new Date().getFullYear() } PingToHR. Built with ❤️ by Ritik.
-            </footer>
-        </div>
+                <section id="features" className="py-20 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <h2 className="text-4xl font-bold text-center mb-14 text-white/90">Powerful Outreach Tools</h2>
+                        <div className="grid md:grid-cols-3 gap-12 text-center">
+                            { [
+                                {
+                                    title: 'Bulk Emailing',
+                                    desc: 'Send cold emails in bulk from your Gmail with smart scheduling.',
+                                },
+                                {
+                                    title: 'Follow-up Automation',
+                                    desc: 'Automatically follow up with HRs who didn’t respond.',
+                                },
+                                {
+                                    title: 'Email Permutation Generator',
+                                    desc: 'Find the right email format for any company with one click.',
+                                },
+                                {
+                                    title: 'Bulk Email Validation',
+                                    desc: 'Clean up your list with bulk validation and avoid bounces.',
+                                },
+                                {
+                                    title: 'Mail Tracking',
+                                    desc: 'Track opens, clicks, and responses — know who’s engaging.',
+                                },
+                                {
+                                    title: 'Contact Management',
+                                    desc: 'Import, tag, and manage HR contact lists with ease.',
+                                },
+                            ].map( ( { title, desc }, i ) => (
+                                <div
+                                    key={ i }
+                                    className="p-8 bg-gradient-to-tr from-[#121722] to-[#0B0F1A] rounded-lg shadow-lg border border-white/10 hover:shadow-purple-700 transition"
+                                >
+                                    <h3 className="text-2xl font-semibold mb-3 text-white/90">{ title }</h3>
+                                    <p className="text-white/70">{ desc }</p>
+                                </div>
+                            ) ) }
+                        </div>
+                    </div>
+                </section>
+
+                <section className="py-20 px-6">
+                    <div className="max-w-7xl mx-auto bg-gradient-to-br from-[#121722] via-[#0B0F1A] to-[#171c2f] border border-white/10 rounded-3xl text-white py-16 px-10 mt-10 shadow-lg">
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
+                            <p className="text-xl max-w-2xl text-white/70">
+                                Whether you're job hunting or building your HR network, PingToHR helps you scale your outreach efforts and stand out in the inbox.
+                            </p>
+                            <button className="bg-gradient-to-br from-[#2c2f5d] via-[#292d59] to-[#1f2245] border border-white/20 font-semibold py-4 px-12 rounded-xl shadow-lg text-white hover:from-[#343864] hover:to-[#232752] transition">
+                                Start Free Today
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="benefits" className="py-20 px-6">
+                    <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl mt-10 shadow-inner border border-white/10 p-10">
+                        <h2 className="text-4xl font-bold text-center mb-16 text-white/90">Why You'll Love It</h2>
+                        <div className="grid md:grid-cols-2 gap-12">
+                            <div className="bg-gradient-to-tr from-[#121722] to-[#0B0F1A] p-8 rounded-xl shadow-md border border-white/10 hover:shadow-purple-700 transition">
+                                <h3 className="text-2xl font-semibold mb-4 text-white/90">Personal Gmail Integration</h3>
+                                <p className="text-white/70">Send emails from your own inbox, keeping it personal and authentic.</p>
+                            </div>
+                            <div className="bg-gradient-to-tr from-[#121722] to-[#0B0F1A] p-8 rounded-xl shadow-md border border-white/10 hover:shadow-purple-700 transition">
+                                <h3 className="text-2xl font-semibold mb-4 text-white/90">Boost Response Rates</h3>
+                                <p className="text-white/70">Smart follow-ups and tracking tools help you land more replies.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section className="relative py-28 overflow-hidden">
+                    <div className="max-w-6xl mx-auto relative z-10 grid md:grid-cols-2 gap-16 items-center px-6 text-center md:text-left">
+                        {/* Left Column: Text Content */ }
+                        <div>
+                            <h4 className="text-white text-lg uppercase font-semibold mb-4">Performance</h4>
+                            <h2 className="text-5xl md:text-6xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white via-purple-400 to-white tracking-tight mb-6">
+                                Trusted by Job Seekers
+                            </h2>
+                            <p className="text-white/70 text-lg leading-relaxed max-w-md">
+                                PingToHR empowers job seekers to supercharge their outreach with real results —
+                                from bulk emailing to smart follow-ups, all directly from your Gmail.
+                            </p>
+                        </div>
+
+                        {/* Right Column: 2x2 Metrics Grid */ }
+                        <div className="grid grid-cols-2 gap-8">
+                            <div
+                                className="flex flex-col items-right justify-center p-6"
+                            >
+                                <h3 className="text-7xl text-blue-500">200K</h3>
+                                <p className="text-white mt-3 text-lg">Emails Sent via Gmail</p>
+                            </div>
+                            <div
+                                className="flex flex-col items-right justify-center p-6"
+                            >
+                                <h3 className="text-7xl bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 text-transparent bg-clip-text">
+                                    95%
+                                </h3>
+                                <p className="text-white mt-3 text-lg">Email Delivery Rate</p>
+                            </div>
+                            <div
+                                className="flex flex-col items-right justify-center p-6"
+                            >
+                                <h3 className="text-8xl text-purple-500">3X</h3>
+                                <p className="text-white mt-3 text-lg">Higher HR Reply Rates</p>
+                            </div>
+                            <div
+                                className="flex flex-col items-right justify-center p-6"
+                            >
+                                <h3 className="text-7xl bg-gradient-to-r from-purple-400 via-pink-400 to-white text-transparent bg-clip-text">
+                                    50K+
+                                </h3>
+                                <p className="text-white mt-3 text-lg">Contacts Managed</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+
+
+
+
+                <section id="how-it-works" className="py-20 px-6">
+                    <div className="max-w-7xl mx-auto bg-gradient-to-br from-[#121722] via-[#0B0F1A] to-[#1a1f33] rounded-3xl shadow-xl border border-white/10 p-12">
+                        <h2 className="text-4xl font-bold text-center mb-14 text-white/90">How It Works</h2>
+                        <div className="grid md:grid-cols-4 gap-10 text-center text-white/80">
+                            { [
+                                {
+                                    step: "1. Connect Gmail",
+                                    desc: "Securely sync your Gmail account to start sending emails instantly.",
+                                },
+                                {
+                                    step: "2. Import HR Contacts",
+                                    desc: "Upload CSV files or add contacts manually to manage your outreach list.",
+                                },
+                                {
+                                    step: "3. Generate & Validate",
+                                    desc: "Create email permutations, validate them in bulk to avoid bounces.",
+                                },
+                                {
+                                    step: "4. Automate Outreach",
+                                    desc: "Send emails and schedule follow-ups — track engagement in real-time.",
+                                },
+                            ].map( ( { step, desc }, i ) => (
+                                <div
+                                    key={ i }
+                                    className="p-6 bg-gradient-to-tr from-[#1a1f33] to-[#0B0F1A] rounded-xl shadow-md border border-white/10 hover:shadow-purple-700 transition"
+                                >
+                                    <h3 className="text-xl font-semibold mb-3">{ step }</h3>
+                                    <p className="text-white/70">{ desc }</p>
+                                </div>
+                            ) ) }
+                        </div>
+                    </div>
+                </section>
+
+                <footer className="text-center py-12 border-t border-purple-700 mt-20 text-white/60 px-6">
+                    <div className="max-w-7xl mx-auto">
+                        <p>&copy; { new Date().getFullYear() } PingToHR. All rights reserved.</p>
+                    </div>
+                </footer>
+            </div>
+        </>
     );
-};
-
-const FeatureCard = ( { title, description }: { title: string, description: string } ) => (
-    <div className="bg-white rounded-2xl shadow-md p-6 text-center hover:shadow-lg transition-shadow duration-300">
-        {/* Optional Icon slot */ }
-        <h4 className="font-semibold text-xl text-gray-800 mb-3">{ title }</h4>
-        <p className="text-gray-600 text-sm">{ description }</p>
-    </div>
-);
-
-export default HomePage;
+}
