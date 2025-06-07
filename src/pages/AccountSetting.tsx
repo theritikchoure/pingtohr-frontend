@@ -15,6 +15,7 @@ export default function AccountSettings() {
         if ( file && file.size <= 2 * 1024 * 1024 ) {
             setResume( file );
             setUploadDate( new Date() );
+            console.log(uploadDate)
             // upload to server if needed
         } else {
             alert( "File too large. Max 2MB allowed." );

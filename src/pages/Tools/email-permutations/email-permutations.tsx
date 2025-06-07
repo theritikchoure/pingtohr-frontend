@@ -1,24 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { generateEmailPermutations } from "../../../api/endpoints/emails";
 
-const generatePermutations = ( firstName: string, lastName:string, domain:string ) => {
-    const f = firstName.toLowerCase();
-    const l = lastName.toLowerCase();
-    const d = domain.toLowerCase();
-
-    return [
-        `${f}@${d}`,
-        `${l}@${d}`,
-        `${f}.${l}@${d}`,
-        `${f}_${l}@${d}`,
-        `${f}${l}@${d}`,
-        `${l}${f}@${d}`,
-        `${f[ 0 ]}${l}@${d}`,
-        `${f}${l[ 0 ]}@${d}`,
-        `${f[ 0 ]}.${l}@${d}`,
-        `${f}.${l[ 0 ]}@${d}`,
-    ];
-};
 
 export default function EmailPermutations() {
     const [ firstName, setFirstName ] = useState( "" );
@@ -32,16 +14,16 @@ export default function EmailPermutations() {
             return;
         }
 
-        let emails = await generateEmailPermutations( firstName, lastName, domain );
+        const emails = await generateEmailPermutations( firstName, lastName, domain );
 
         console.log( emails );
         setEmails(  emails.data.data);
     };
 
-    const [ copiedEmailIndex, setCopiedEmailIndex ] = useState( null );
+    const [ copiedEmailIndex, setCopiedEmailIndex ] = useState<number | null>( null );
     const [ copiedAll, setCopiedAll ] = useState( false );
 
-    const copyToClipboard = ( text, index = null ) => {
+    const copyToClipboard = ( text:string, index:number|null ) => {
         navigator.clipboard.writeText( text ).then( () => {
             if ( index !== null ) {
                 setCopiedEmailIndex( index );
@@ -129,7 +111,7 @@ export default function EmailPermutations() {
                             Possible Emails:
                         </h2>
                         <button
-                            onClick={ () => copyToClipboard( emails.join( ", " ) ) }
+                            onClick={ () => copyToClipboard( emails.join( ", " ) , null) }
                             className="text-sm bg-blue-600 text-white px-4 py-1 rounded-lg shadow-md hover:bg-blue-700 transition"
                         >
                             { copiedAll ? "Copied!" : "Copy All" }

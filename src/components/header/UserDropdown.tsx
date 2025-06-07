@@ -5,7 +5,7 @@ import { Link } from "react-router";
 
 export default function UserDropdown() {
 
-  let user = JSON.parse( localStorage.getItem( "user" ) );
+  const user = JSON.parse( localStorage.getItem( "user" ) || '{}' );
   console.log( user );
 
   const [isOpen, setIsOpen] = useState(false);
