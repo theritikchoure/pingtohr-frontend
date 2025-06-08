@@ -4,6 +4,7 @@ import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
 import Checkbox from "../form/input/Checkbox";
+import axios from "axios";
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,9 +16,8 @@ export default function SignUpForm() {
 
 
   useEffect( () => {
-    fetch( "/api/auth/me", { credentials: "include" } )
-      .then( res => res.json() )
-      .then( user => console.log( user ) );
+    axios.get( '/api/auth/me', { withCredentials: true } )
+      .then( res => console.log( "USER:", res.data ) );
   }, [] );
   return (
     <div className="flex flex-col flex-1 w-full overflow-y-auto lg:w-1/2 no-scrollbar">
