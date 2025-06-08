@@ -79,7 +79,11 @@ export default function LandingPage() {
                     </div>
                 </section>
 
-                <img src={ "./images/dashboard.png" } alt="" className="mx-auto max-w-7xl rounded-3xl border border-white/10 shadow-2xl" />
+                <img
+                    src="./images/dashboard.png"
+                    alt="Dashboard Preview"
+                    className="w-[90%] max-w-7xl mx-auto rounded-3xl border border-white/10 shadow-2xl"
+                />
                 
                 <section id="about" className="py-20 px-6">
                     <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl shadow-lg border border-white/10 p-8">
