@@ -79,6 +79,8 @@ export default function LandingPage() {
                     </div>
                 </section>
 
+                <img src={ "./images/dashboard.png" } alt="" className="mx-auto max-w-7xl rounded-3xl border border-white/10 shadow-2xl" />
+                
                 <section id="about" className="py-20 px-6">
                     <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl shadow-lg border border-white/10 p-8">
                         <h2 className="text-xl mb-8 text-center font-semibold uppercase tracking-wide text-white/70">About PingToHR</h2>
@@ -96,47 +98,56 @@ export default function LandingPage() {
                                 {
                                     title: 'Bulk Emailing',
                                     desc: 'Send cold emails in bulk from your Gmail with smart scheduling.',
+                                    src: './images/bulk-email-sending.svg'
                                 },
                                 {
                                     title: 'Follow-up Automation',
                                     desc: 'Automatically follow up with HRs who didn’t respond.',
+                                    src: './images/followup-automation.svg',
                                 },
                                 {
                                     title: 'Email Permutation Generator',
                                     desc: 'Find the right email format for any company with one click.',
+                                    src: "./images/email-permutation-generation.svg"
                                 },
                                 {
                                     title: 'Bulk Email Validation',
                                     desc: 'Clean up your list with bulk validation and avoid bounces.',
+                                    src: './images/bulk-email-validation.svg'
                                 },
                                 {
                                     title: 'Mail Tracking',
                                     desc: 'Track opens, clicks, and responses — know who’s engaging.',
+                                    src: './images/email-tracking.svg',
                                 },
                                 {
                                     title: 'Contact Management',
                                     desc: 'Import, tag, and manage HR contact lists with ease.',
+                                    src: "./images/contact-management.svg"
                                 },
-                            ].map( ( { title, desc }, i ) => (
+                            ].map( ( { title, desc, src }, i ) => (
                                 <div
                                     key={ i }
                                     className="p-8 bg-gradient-to-tr from-[#121722] to-[#0B0F1A] rounded-lg shadow-lg border border-white/10 hover:shadow-purple-700 transition"
                                 >
                                     <h3 className="text-2xl font-semibold mb-3 text-white/90">{ title }</h3>
                                     <p className="text-white/70">{ desc }</p>
+                                    <img src={src} alt="" className="mt-8 w-52 mx-auto"/>
                                 </div>
                             ) ) }
                         </div>
                     </div>
                 </section>
 
-                <section className="py-20 px-6">
-                    <div className="max-w-7xl mx-auto bg-gradient-to-br from-[#121722] via-[#0B0F1A] to-[#171c2f] border border-white/10 rounded-3xl text-white py-16 px-10 mt-10 shadow-lg">
+                <section className=" py-20 px-6 ">
+                    <div className="relative max-w-7xl mx-auto bg-gradient-to-br from-[#121722] via-[#0B0F1A] to-[#171c2f] border border-white/10 rounded-3xl text-white py-16 px-10 mt-10 shadow-lg">
+                        {/* Background Image Layer */ }
+                        <div className="absolute inset-0 bg-[url('/images/shape/grid-01.svg')] bg-top bg-cover bg-no-repeat opacity-10 pointer-events-none z-0" />
                         <div className="flex flex-col md:flex-row items-center justify-between gap-8 text-center md:text-left">
                             <p className="text-xl max-w-2xl text-white/70">
                                 Whether you're job hunting or building your HR network, PingToHR helps you scale your outreach efforts and stand out in the inbox.
                             </p>
-                            <button className="bg-gradient-to-br from-[#2c2f5d] via-[#292d59] to-[#1f2245] border border-white/20 font-semibold py-4 px-12 rounded-xl shadow-lg text-white hover:from-[#343864] hover:to-[#232752] transition">
+                            <button className="bg-gradient-to-br from-[#161b2b] via-[#1f2541] to-[#121828] border border-white/30 text-white px-12 py-4 rounded-2xl font-semibold text-lg shadow-lg hover:from-[#222a43] hover:to-[#171f3a] transition">
                                 Start Free Today
                             </button>
                         </div>

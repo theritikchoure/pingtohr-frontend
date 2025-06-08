@@ -306,7 +306,7 @@ const AppSidebar: React.FC = () => {
         <Link to="/">
           { isExpanded || isHovered || isMobileOpen ? (
             <>
-              <p>Ping To HR</p>
+              <p className="text-black dark:text-white text-lg">Ping To HR</p>
             </>
           ) : (
             <p>PTH</p>
