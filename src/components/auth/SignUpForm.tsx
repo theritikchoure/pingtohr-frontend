@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
@@ -7,7 +7,18 @@ import Checkbox from "../form/input/Checkbox";
 
 export default function SignUpForm() {
   const [showPassword, setShowPassword] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
+  const [ isChecked, setIsChecked ] = useState( false );
+  
+  const handleGoogleLogin = () => {
+    window.location.href = "/api/auth/google"; // Works because of NGINX reverse proxy
+  }
+
+
+  useEffect( () => {
+    fetch( "/api/auth/me", { credentials: "include" } )
+      .then( res => res.json() )
+      .then( user => console.log( user ) );
+  }, [] );
   return (
     <div className="flex flex-col flex-1 w-full overflow-y-auto lg:w-1/2 no-scrollbar">
       {/* <div className="w-full max-w-md mx-auto mb-5 sm:pt-10">
@@ -30,8 +41,8 @@ export default function SignUpForm() {
             </p>
           </div>
           <div>
-            {/* <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
-              <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
+              <button onClick={handleGoogleLogin} className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
                 <svg
                   width="20"
                   height="20"
@@ -81,7 +92,7 @@ export default function SignUpForm() {
                   Or
                 </span>
               </div>
-            </div> */}
+            </div>
             <form>
               <div className="space-y-5">
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
