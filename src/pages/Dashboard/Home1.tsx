@@ -1,21 +1,68 @@
+import { useState } from "react";
 import PageMeta from "../../components/common/PageMeta";
+import { Link } from "react-router";
 
 export default function LandingPage() {
+    const [ isOpen, setIsOpen ] = useState( false );
     return (
         <>
             <PageMeta title="PingToHR – Supercharge Your Job Outreach with Smart Email Automation" description="PingToHR is your all-in-one HR contact manager and cold email assistant. Automate outreach, track engagement, and boost your job search—all directly from your Gmail inbox." />
 
             <div className="bg-gradient-to-b from-[#0B0F1A] to-[#121722] text-white font-sans min-h-screen">
-                <header className="flex justify-between items-center p-6 max-w-7xl mx-auto">
-                    <div className="text-2xl font-bold text-white">PingToHR</div>
-                    <nav className="space-x-8 text-lg">
-                        <a href="#features" className="hover:text-white/80 transition">Features</a>
-                        <a href="#benefits" className="hover:text-white/80 transition">Benefits</a>
-                        <a href="#pricing" className="hover:text-white/80 transition">Pricing</a>
-                    </nav>
-                    <button className="bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow-lg hover:from-[#252c47] hover:to-[#131923] transition">
-                        Get Started
-                    </button>
+                <header className="relative bg-transparent z-50">
+                    <div className="flex justify-between items-center p-6 max-w-7xl mx-auto md:gap-8">
+                        {/* Centered on small screens */ }
+                        <div className="flex-1 flex justify-center md:justify-start">
+                            <div className="text-2xl font-bold text-white">PingToHR</div>
+                        </div>
+
+                        {/* Navigation (hidden on small) */ }
+                        <nav className="hidden md:flex space-x-8 text-lg">
+                            <a href="#features" className="hover:text-white/80 transition">Features</a>
+                            <a href="#benefits" className="hover:text-white/80 transition">Benefits</a>
+                            <a href="#pricing" className="hover:text-white/80 transition">Pricing</a>
+                        </nav>
+
+                        {/* Button + Hamburger */ }
+                        <div className="flex items-center gap-4">
+                            <Link to={'/signin'} className="hidden md:block bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow-lg hover:from-[#252c47] hover:to-[#131923] transition">
+                                Get Started
+                            </Link>
+                            {/* Hamburger for mobile */ }
+                            <button
+                                className="md:hidden text-white"
+                                onClick={ () => setIsOpen( true ) }
+                            >
+                                {/* <Menu size={ 28 } /> */ }
+                                <svg className="w-8 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 7L7 7M20 7L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M20 17H17M4 17L13 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                    <path d="M4 12H7L20 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* Sidebar menu */ }
+                    <div className={ `fixed top-0 right-0 h-full w-64 bg-[#0B0F1A] text-white shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}` }>
+                        <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
+                            <span className="text-lg font-bold">Menu</span>
+                            <button onClick={ () => setIsOpen( false ) }>
+                                {/* <X size={ 24 } /> */ }
+                                <svg className="w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M19 5L4.99998 19M5.00001 5L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                            </button>
+                        </div>
+                        <nav className="flex flex-col p-6 space-y-4 text-lg">
+                            <a href="#features" onClick={ () => setIsOpen( false ) }>Features</a>
+                            <a href="#benefits" onClick={ () => setIsOpen( false ) }>Benefits</a>
+                            <a href="#pricing" onClick={ () => setIsOpen( false ) }>Pricing</a>
+                            <button className="mt-6 bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow hover:from-[#252c47] hover:to-[#131923] transition">
+                                Get Started
+                            </button>
+                        </nav>
+                    </div>
                 </header>
 
                 <section className="text-center py-24 px-6">
