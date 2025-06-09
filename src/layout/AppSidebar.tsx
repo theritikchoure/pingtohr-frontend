@@ -49,7 +49,7 @@ const navItems: NavItem[] = [
     icon: <ListIcon />,
     subItems: [
       { name: "Email Permutations", path: "/tools/email-permutations", pro: false },
-      { name: "Validate Emails", path: "/tools/validate-emails", pro: false }
+      { name: "Validate Emails", path: "/tools/email-verifier", pro: false }
     ],
   },
   {

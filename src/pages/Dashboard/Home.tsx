@@ -66,7 +66,7 @@ export default function Home() {
     <>
       <PageMeta
         title="PingToHR | Cold Email Platform"
-        description="This is React.js Ecommerce Dashboard page for TailAdmin - React.js Tailwind CSS Admin Dashboard Template"
+        description="PingToHR is your all-in-one HR contact manager and cold email assistant. Automate outreach, track engagement, and boost your job search—all directly from your Gmail inbox."
       />
 
       
@@ -154,7 +154,7 @@ export default function Home() {
 
       </div> }
 
-      { smtpAuthVerified && <div className="grid grid-cols-12 gap-4 md:gap-6">
+      { !smtpAuthVerified && <div className="grid grid-cols-12 gap-4 md:gap-6">
         <div className="col-span-12 space-y-6 xl:col-span-7">
           <EcommerceMetrics />
 

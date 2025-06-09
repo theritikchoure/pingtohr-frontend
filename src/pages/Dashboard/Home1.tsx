@@ -1,90 +1,130 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import PageMeta from "../../components/common/PageMeta";
 import { Link } from "react-router";
+import AutoScrollMockups from "../../components/AutoScrollMockups";
+
+
+
 
 export default function LandingPage() {
     const [ isOpen, setIsOpen ] = useState( false );
+
+
     return (
         <>
-            <PageMeta title="PingToHR – Supercharge Your Job Outreach with Smart Email Automation" description="PingToHR is your all-in-one HR contact manager and cold email assistant. Automate outreach, track engagement, and boost your job search—all directly from your Gmail inbox." />
+            <PageMeta title="PingToHR – Supercharge Your Job Outreach with Smart Email Automation"
+                description="PingToHR is your all-in-one HR contact manager and cold email assistant. Automate outreach, track engagement, and boost your job search—all directly from your Gmail inbox." />
 
             <div className="bg-gradient-to-b from-[#0B0F1A] to-[#121722] text-white font-sans min-h-screen">
+
+                {/* Header */ }
                 <header className="relative bg-transparent z-50">
                     <div className="flex justify-between items-center p-6 max-w-7xl mx-auto md:gap-8">
-                        {/* Centered on small screens */ }
                         <div className="flex-1 flex justify-center md:justify-start">
                             <div className="text-2xl font-bold text-white">PingToHR</div>
                         </div>
 
-                        {/* Navigation (hidden on small) */ }
                         <nav className="hidden md:flex space-x-8 text-lg">
                             <a href="#features" className="hover:text-white/80 transition">Features</a>
                             <a href="#benefits" className="hover:text-white/80 transition">Benefits</a>
                             <a href="#pricing" className="hover:text-white/80 transition">Pricing</a>
                         </nav>
 
-                        {/* Button + Hamburger */ }
                         <div className="flex items-center gap-4">
-                            <Link to={'/signin'} className="hidden md:block bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow-lg hover:from-[#252c47] hover:to-[#131923] transition">
+                            <Link to="/signin" className="hidden md:block bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow-lg hover:from-[#252c47] hover:to-[#131923] transition">
                                 Get Started
                             </Link>
-                            {/* Hamburger for mobile */ }
-                            <button
-                                className="md:hidden text-white"
-                                onClick={ () => setIsOpen( true ) }
-                            >
-                                {/* <Menu size={ 28 } /> */ }
-                                <svg className="w-8 text-white" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 7L7 7M20 7L11 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                    <path d="M20 17H17M4 17L13 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-                                    <path d="M4 12H7L20 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                            <button className="md:hidden text-white" onClick={ () => setIsOpen( true ) }>
+                                <svg className="w-8 text-white" viewBox="0 0 24 24" fill="none">
+                                    <path d="M4 7L7 7M20 7L11 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                    <path d="M20 17H17M4 17L13 17" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                    <path d="M4 12H7L20 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 </svg>
                             </button>
                         </div>
                     </div>
 
-                    {/* Sidebar menu */ }
-                    <div className={ `fixed top-0 right-0 h-full w-64 bg-[#0B0F1A] text-white shadow-lg transform transition-transform duration-300 ${isOpen ? 'translate-x-0' : 'translate-x-full'}` }>
-                        <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
-                            <span className="text-lg font-bold">Menu</span>
-                            <button onClick={ () => setIsOpen( false ) }>
-                                {/* <X size={ 24 } /> */ }
-                                <svg className="w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M19 5L4.99998 19M5.00001 5L19 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </button>
-                        </div>
-                        <nav className="flex flex-col p-6 space-y-4 text-lg">
-                            <a href="#features" onClick={ () => setIsOpen( false ) }>Features</a>
-                            <a href="#benefits" onClick={ () => setIsOpen( false ) }>Benefits</a>
-                            <a href="#pricing" onClick={ () => setIsOpen( false ) }>Pricing</a>
-                            <button className="mt-6 bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow hover:from-[#252c47] hover:to-[#131923] transition">
-                                Get Started
-                            </button>
-                        </nav>
-                    </div>
+                    {/* Mobile Sidebar */ }
+                    <AnimatePresence>
+                        { isOpen && (
+                            <motion.div
+                                initial={ { x: '100%' } }
+                                animate={ { x: 0 } }
+                                exit={ { x: '100%' } }
+                                transition={ { type: 'spring', stiffness: 300, damping: 30 } }
+                                className="fixed top-0 right-0 h-full w-64 bg-[#0B0F1A] text-white shadow-lg z-50"
+                            >
+                                <div className="flex justify-between items-center px-6 py-4 border-b border-white/10">
+                                    <span className="text-lg font-bold">Menu</span>
+                                    <button onClick={ () => setIsOpen( false ) }>
+                                        <svg className="w-6" viewBox="0 0 24 24" fill="none">
+                                            <path d="M19 5L5 19M5 5L19 19" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <nav className="flex flex-col p-6 space-y-4 text-lg">
+                                    <a href="#features" onClick={ () => setIsOpen( false ) }>Features</a>
+                                    <a href="#benefits" onClick={ () => setIsOpen( false ) }>Benefits</a>
+                                    <a href="#pricing" onClick={ () => setIsOpen( false ) }>Pricing</a>
+                                    <Link to={"/signin"} className="mt-6 bg-gradient-to-br from-[#1e253a] via-[#171c2f] to-[#0b101c] border border-white/20 text-white px-5 py-2 rounded font-semibold shadow hover:from-[#252c47] hover:to-[#131923] transition">
+                                        Get Started
+                                    </Link>
+                                </nav>
+                            </motion.div>
+                        ) }
+                    </AnimatePresence>
                 </header>
 
-                <section className="text-center py-24 px-6">
+                {/* Hero Section */ }
+                <motion.section
+                    className="text-center py-24 px-6"
+                    initial={ { opacity: 0, y: 40 } }
+                    animate={ { opacity: 1, y: 0 } }
+                    transition={ { duration: 0.6 } }
+                >
                     <div className="max-w-7xl mx-auto">
-                        <h1 className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white">
+                        <motion.h1
+                            className="text-5xl md:text-6xl font-extrabold mb-6 leading-tight text-white"
+                            initial={ { opacity: 0, y: 20 } }
+                            animate={ { opacity: 1, y: 0 } }
+                            transition={ { delay: 0.2 } }
+                        >
                             Reach More HRs, Faster
-                        </h1>
-                        <p className="text-xl md:text-2xl mb-10 max-w-xl mx-auto text-white/70">
+                        </motion.h1>
+                        <motion.p
+                            className="text-xl md:text-2xl mb-10 max-w-xl mx-auto text-white/70"
+                            initial={ { opacity: 0 } }
+                            animate={ { opacity: 1 } }
+                            transition={ { delay: 0.4 } }
+                        >
                             Manage HR contacts, automate cold emails, track responses, and boost your outreach with PingToHR — all from your own Gmail.
-                        </p>
-                        <button className="bg-gradient-to-br from-[#161b2b] via-[#1f2541] to-[#121828] border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:from-[#222a43] hover:to-[#171f3a] transition">
-                            Start Emailing Smarter
-                        </button>
+                        </motion.p>
+                        <Link to={ "/signin" }>
+                            <motion.button
+                                whileHover={ { scale: 1.05 } }
+                                whileTap={ { scale: 0.95 } }
+                                className="bg-gradient-to-br from-[#161b2b] via-[#1f2541] to-[#121828] border border-white/30 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:from-[#222a43] hover:to-[#171f3a] transition"
+                            >
+                                Start Emailing Smarter
+                            </motion.button>
+                        </Link>
                     </div>
-                </section>
+                </motion.section>
 
-                <img
+
+                {/* Responsive Image */ }
+                <motion.img
+                    initial={ { opacity: 0, y: 30 } }
+                    whileInView={ { opacity: 1, y: 0 } }
+                    transition={ { duration: 0.7 } }
+                    viewport={ { once: true } }
                     src="./images/dashboard.png"
                     alt="Dashboard Preview"
                     className="w-[90%] max-w-7xl mx-auto rounded-3xl border border-white/10 shadow-2xl"
                 />
-                
+
+                {/* No changes made to remaining sections – they're untouched structure-wise */ }
                 <section id="about" className="py-20 px-6">
                     <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl shadow-lg border border-white/10 p-8">
                         <h2 className="text-xl mb-8 text-center font-semibold uppercase tracking-wide text-white/70">About PingToHR</h2>
@@ -136,12 +176,13 @@ export default function LandingPage() {
                                 >
                                     <h3 className="text-2xl font-semibold mb-3 text-white/90">{ title }</h3>
                                     <p className="text-white/70">{ desc }</p>
-                                    <img src={src} alt="" className="mt-8 w-52 mx-auto"/>
+                                    <img src={ src } alt="" className="mt-8 w-52 mx-auto" />
                                 </div>
                             ) ) }
                         </div>
                     </div>
                 </section>
+
 
                 <section className=" py-20 px-6 ">
                     <div className="relative max-w-7xl mx-auto bg-gradient-to-br from-[#121722] via-[#0B0F1A] to-[#171c2f] border border-white/10 rounded-3xl text-white py-16 px-10 mt-10 shadow-lg">
@@ -157,6 +198,31 @@ export default function LandingPage() {
                         </div>
                     </div>
                 </section>
+
+                <section className="bg-[#0B0F1A] text-white py-20 px-6">
+                    <div className="max-w-7xl mx-auto text-center">
+                        <motion.h2
+                            className="text-4xl font-bold mb-4"
+                            initial={ { opacity: 0, y: 30 } }
+                            whileInView={ { opacity: 1, y: 0 } }
+                            transition={ { duration: 0.6 } }
+                        >
+                            Use PingToHR On the Go
+                        </motion.h2>
+
+                        <motion.p
+                            className="text-white/70 text-lg md:text-xl mb-12"
+                            initial={ { opacity: 0, y: 20 } }
+                            whileInView={ { opacity: 1, y: 0 } }
+                            transition={ { delay: 0.2, duration: 0.6 } }
+                        >
+                            Enjoy a seamless experience across all devices—access PingToHR anytime, anywhere.
+                        </motion.p>
+
+                        <AutoScrollMockups />
+                    </div>
+                </section>
+
 
                 <section id="benefits" className="py-20 px-6">
                     <div className="max-w-7xl mx-auto bg-gradient-to-tr from-[#0B0F1A] to-[#121722] rounded-xl mt-10 shadow-inner border border-white/10 p-10">
@@ -266,6 +332,7 @@ export default function LandingPage() {
                         <p>&copy; { new Date().getFullYear() } PingToHR. All rights reserved.</p>
                     </div>
                 </footer>
+
             </div>
         </>
     );
